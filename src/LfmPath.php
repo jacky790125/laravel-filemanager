@@ -90,6 +90,10 @@ class LfmPath
 
     public function url()
     {
+        if($this->helper->config('disk') == 'ftp'){
+            return env('FTP_FILE_URL').'/'.env('FTP_FILE_ROOT').'/'.$this->path('url');
+        }
+        
         return $this->storage->url($this->path('url'));
     }
 
